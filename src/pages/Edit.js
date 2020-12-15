@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import clsx from 'clsx';
@@ -11,8 +11,8 @@ import SaveIcon from '@material-ui/icons/Save';
 import { useForm } from "react-hook-form";
 import Input from '@material-ui/core/Input';
 import {useHistory} from 'react-router-dom'
+import RoomForm from './components/roomForm'
 import 'materialize-css'
-import RoomForm from '../components/roomForm';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,38 +45,27 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const Create = () => {
+const Edit = () => {
     const classes = useStyles()
 
-    const { register, handleSubmit } = useForm()
+    const { room, setRoom } = useState()
+    const { register, handleSubmit } = useForm({
+        defaultValues: {text : room ? room.text : "" }
+    })
+
     const history = useHistory()
     
+    useEffect(() => {
+        setRoom()
+    }, [])
+
     const onSubmit = (data) => {
-      alert("qwe")
-  }
+        alert("qwe")
+    }
+
 
     return (
-      <RoomForm onSubmit = { onSubmit }/>
-
+    <RoomForm room = {room} onSubmit = { onSubmit }/>
   );
 }
-
-// <FormControlLabel
-//             name="miniBar"
-//             value=""
-//             control={<Switch color="primary" />}
-//             label="Mini-bar"
-//             labelPlacement="start"
-//             />
-//             <Button
-//             type="submit"
-//             variant="contained"
-//             color="primary"
-//             size="small"
-//             className={classes.button}
-//             startIcon={<SaveIcon />}
-//             disabled={false}
-//             >
-//             Upload Room
-//             </Button>
-export default Create
+export default Edit

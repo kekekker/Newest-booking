@@ -2,6 +2,7 @@ import List from './pages/List'
 import Navbar from './components/navbar'
 import Create from './pages/Create'
 import Room from './pages/Room'
+import 'materialize-css'
 import {Switch, Route, Redirect} from 'react-router-dom'
 
 

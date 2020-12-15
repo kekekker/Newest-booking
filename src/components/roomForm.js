@@ -12,7 +12,6 @@ import { useForm } from "react-hook-form";
 import Input from '@material-ui/core/Input';
 import {useHistory} from 'react-router-dom'
 import 'materialize-css'
-import RoomForm from '../components/roomForm';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,19 +44,88 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const Create = () => {
+const roomForm = ({ room, submitHandler }) => {
     const classes = useStyles()
 
-    const { register, handleSubmit } = useForm()
+    const { room, setRoom } = useState()
+    const { register, handleSubmit } = useForm({
+        defaultValues: {text : room ? room.text : "" }
+    })
+
     const history = useHistory()
-    
-    const onSubmit = (data) => {
-      alert("qwe")
-  }
+
+    const submitHandler = handleSubmit((data) => {
+        onSubmit(data)
+        history.push("/")
+    });
 
     return (
-      <RoomForm onSubmit = { onSubmit }/>
-
+    
+    <React.Fragment>
+      <Container className={classes.cont}>
+      <form onSubmit={submitHandler}>
+      <div className="">
+        <input
+          className=""
+          ref={register}
+          type="text"
+          name="name"
+          id="name"
+        />
+        <input
+          className=""
+          ref={register}
+          type="text"
+          name="about"
+          id="about"
+        />
+        <input
+          className=""
+          ref={register}
+          type="text"
+          name="space"
+          id="space"
+        />
+        <input
+          className=""
+          ref={register}
+          type="text"
+          name="sleeping areas"
+          id="sleeping areas"
+        />
+        <input
+          className=""
+          ref={register}
+          type="text"
+          name="default price"
+          id="default price"
+        />
+        <input
+          className=""
+          ref={register}
+          type="text"
+          name="bathrooms"
+          id="bathrooms"
+        />
+      </div>
+      <div className="">
+      <Button
+      type="submit"
+      variant="contained"
+      color="primary"
+      size="small"
+      className={classes.button}
+      startIcon={<SaveIcon />}
+      disabled={false}
+      >
+      Upload Room
+      </Button>
+      </div>
+      </form> 
+            
+        
+      </Container>
+    </React.Fragment>
   );
 }
 
@@ -79,4 +147,4 @@ const Create = () => {
 //             >
 //             Upload Room
 //             </Button>
-export default Create
+export default roomForm
