@@ -1,4 +1,5 @@
 import Navbar from './components/navbar'
+import Create from './pages/Create'
 import {Switch, Route, Redirect} from 'react-router-dom'
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
             {/* <List /> */}
         </Route>
         <Route path="/Create">
-            {/* <Create /> */}
+            <Create />
         </Route>
         <Route path="/Room/:id" >
             {/* <Room /> */}

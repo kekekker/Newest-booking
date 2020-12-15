@@ -1,8 +1,47 @@
-export const Create = () => {
-    const history = useHistory() 
-    const classes = useStyles();
-    
+import React from 'react';
+import Container from '@material-ui/core/Container';
+import TextField from '@material-ui/core/TextField';
+import clsx from 'clsx';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import SaveIcon from '@material-ui/icons/Save';
 
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+        width: '25ch',
+      },
+      height: `100%`,
+      display: `flex`,
+      flexDirection: `column`,
+      justifyContent: `space-between`
+    },
+    input: {
+        display: 'none',
+    },
+    cont: {
+        display: `flex`,
+        flexDirection: `row`,
+        justifyContent: `space-between`,
+        height: `590px`,
+        maxWidth: `1000px`,        
+        marginTop: 100,
+    },
+    TextField: {
+        marginTop: `100px`
+    },
+    del: {
+        width: `50px`
+    }
+  }));
+
+const Create = () => {
+    const classes = useStyles();
     return (
     <React.Fragment>
       <Container className={classes.cont}>
@@ -22,13 +61,11 @@ export const Create = () => {
             <TextField 
             name="name"
             id="name" label="Room name" 
-            onChange = {changeHandler}
             />
             <TextField
             id="standard-textarea"
             name="about"
             label="description"
-            onChange = {changeHandler}
             placeholder="Placeholder"
             multiline
             />
@@ -36,7 +73,6 @@ export const Create = () => {
             label="Space"
             name="space"
             id="outlined-start-adornment"
-            onChange = {changeHandler}
             className={clsx(classes.margin, classes.textField)}
              InputProps={{
                 startAdornment: <InputAdornment position="start">Sqm</InputAdornment>,
@@ -47,7 +83,6 @@ export const Create = () => {
             id="outlined-number"
             label="Bathrooms"
             name="bathrooms"
-            onChange = {changeHandler}
             type="number"
             InputLabelProps={{
                 shrink: true,
@@ -57,7 +92,6 @@ export const Create = () => {
             <TextField
             name="sleepingArea"
             id="outlined-number"
-            onChange = {changeHandler}
             label="Sleeping areas"
             type="number"
             InputLabelProps={{
@@ -78,16 +112,15 @@ export const Create = () => {
             size="small"
             className={classes.button}
             startIcon={<SaveIcon />}
-            onClick = {addHandler}
             disabled={false}
             >
             Upload Room
             </Button>
         </form>
-        <CheckboxList
-        name="facilities" 
-        />
+        
       </Container>
     </React.Fragment>
   );
 }
+
+export default Create
