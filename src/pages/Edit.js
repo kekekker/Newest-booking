@@ -29,10 +29,7 @@ const Edit = () => {
   
 
   const del = async () => {
-      const Id = {
-        "id": match.params.id
-      }
-      if (Id) await deleteRoom (Id)
+      await deleteRoom (room, match.params.id)
       console.log("asdfgh")
     };
 

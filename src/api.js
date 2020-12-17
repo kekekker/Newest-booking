@@ -18,13 +18,13 @@ export const updateRoom = (room, id) => fetch(`http://localhost:4000/${id}`, {
   body: JSON.stringify(room)
 })
 
-export const deleteRoom = (id) => fetch(`http://localhost:4000/Edit/${id}`, {
-  method: "POST",
+export const deleteRoom = (room, id) => fetch(`/api/${id}`, {
+  method: "DELETE",
   headers: {
     "Accept": "application/json",
     "Content-Type": "application/json"
   },
-  body: JSON.stringify(id)
+  body: JSON.stringify(room)
 })
 
 export const getRoom = (id) => fetch(`http://localhost:4000/${id}`).then(res => res.json())

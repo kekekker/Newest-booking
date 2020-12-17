@@ -10,10 +10,7 @@
     padding:10px 50px 50px;
   }
 
-h2 		 { 
-  text-align: left;
-  margin-bottom:50px; 
-}
+
 h2 small { 
   font-weight:normal; 
   color:#888; 
@@ -23,6 +20,7 @@ h2 small {
 .footer a  { color:#53B2C8; }
 
 /* form starting stylings ------------------------------- */
+
 .group 			  { 
   position:relative; 
   margin-bottom:45px; 
@@ -30,7 +28,7 @@ h2 small {
 input 				{
   font-size:18px;
   padding:10px 10px 10px 5px;
-  display:block;
+  /* display:block; */
   width:300px;
   border:none;
   border-bottom:1px solid #757575;
@@ -38,7 +36,7 @@ input 				{
 input:focus 		{ outline:none; }
 
 /* LABEL ======================================= */
-label 				 {
+.group label{
   color:#999; 
   font-size:18px;
   font-weight:normal;
@@ -113,4 +111,142 @@ input:focus ~ .highlight {
 @keyframes inputHighlighter {
 	from { background:#5264AE; }
   to 	{ width:0; background:transparent; }
+}
+
+/* //////////////////////////////////////////////////////////// */
+.checkbox {
+  z-index:2;
+  max-width: 640px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+}
+
+ul.ks-cboxtags {
+  padding-inline-start: 0px;
+  list-style: none;
+}
+ul.ks-cboxtags li{
+display: inline;
+}
+ul.ks-cboxtags li label{
+  display: inline-block;
+  background-color: rgba(255, 255, 255, .9);
+  border: 2px solid rgba(139, 139, 139, .3);
+  color: #adadad;
+  border-radius: 25px;
+  white-space: nowrap;
+  margin: 3px 0px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all .2s;
+}
+
+ul.ks-cboxtags li label {
+  margin-left: 15px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+ul.ks-cboxtags li label::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 12px;
+  padding: 2px 6px 2px 2px;
+  content: '\2713';
+  transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
+  content: '\2713';
+  transform: rotate(-360deg);
+  transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+  border: 2px solid #add8e6;
+  background-color: #71c6e2;
+  color: #fff;
+  transition: all .2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+display: absolute;
+}
+ul.ks-cboxtags li input[type="checkbox"] {
+position: absolute;
+opacity: 0;
+}
+/* ul.ks-cboxtags li input[type="checkbox"]:focus + label {
+border: 2px solid #5264AE;
+} */
+
+/* //////////////////////////////////////////////////////// */
+
+textarea {
+  margin-left:75px;
+  resize: none;
+  width: 300px;
+  height: 40px;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+  border-image: none;
+  border-style: none none solid none;
+  border-width: medium 1px 1px medium;
+  box-shadow: 0 0.5px 0.5px solid #757575 inset;
+  color:black;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  line-height: 1.4em;
+  padding: 5px 8px;
+  transition:.3s;
+}
+
+
+textarea:focus {
+    transition:.3s;
+    height: 75px;
+    border-width: medium 3px 3px medium;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color:  #5264AE ;
+    outline-width: 0;
+}
+/* /////////////////////////////////////////////// */
+.cont{
+  margin-left: auto;
+  margin-right: auto;
+  z-index:1;
+  background-color: #f1fcff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width:750px;
+  border-radius: 50px;
+}
+.el{
+  display: flex;
+}
+h2{
+  margin-bottom: 100px;
+  margin-top: 100px;
+  text-align: center;
+}
+.formButton{
+  width: 300px;
 }

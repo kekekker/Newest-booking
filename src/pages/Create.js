@@ -45,7 +45,7 @@ const Create = () => {
   };
 
     return (
-      <RoomForm onSubmit = { onSubmit } article = "Create" buttonText = "upload"/>
+      <RoomForm onSubmit = { onSubmit } article = "Create a new room" buttonText = "upload"/>
   );
 }
 export default Create

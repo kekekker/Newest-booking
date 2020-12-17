@@ -89,17 +89,18 @@ app.post("/:id", (req, res) => {
     }
   });
 });
-
-app.delete(`/Edit:${req.params.id}`).delete((req, res) => {
-  room.findByIdAndRemove(req.params.id, (error, data) => {
+app.use(`/api/${id}`, require('../api'), (req, res) => {
+  const id = req.params.id;
+  room.findByIdAndRemove(id, (error, data) => {
     if (error) {
       return next(error);
     } else {
       res.status(200).json({
-        msg: data
+        msg: "xyu sosi"
       })
     }
   })
 })
+
 
 
