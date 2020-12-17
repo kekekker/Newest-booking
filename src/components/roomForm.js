@@ -1,17 +1,9 @@
-import React from 'react';
-import Container from '@material-ui/core/Container';
-import TextField from '@material-ui/core/TextField';
-import clsx from 'clsx';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import SaveIcon from '@material-ui/icons/Save';
 import { useForm } from "react-hook-form";
-import Input from '@material-ui/core/Input';
 import {useHistory} from 'react-router-dom'
-import 'materialize-css'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -44,88 +36,124 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const roomForm = ({ room, submitHandler }) => {
-    const classes = useStyles()
-
-    const { room, setRoom } = useState()
-    const { register, handleSubmit } = useForm({
-        defaultValues: {text : room ? room.text : "" }
+function RoomForm({ room, onSubmit, article, buttonText}){
+    
+  const classes = useStyles()
+  const { register, handleSubmit } = useForm({
+      defaultValues: {name: room ? room.name : "",
+      space: room ? room.space : "",
+      sleepingAreas: room ? room.sleepingAreas : "",
+      bathrooms: room ? room.bathrooms : "",
+      defaultPrice: room ? room.defaultPrice : "",
+      about: room ? room.about : "",
+      }
     })
-
-    const history = useHistory()
-
+    
     const submitHandler = handleSubmit((data) => {
         onSubmit(data)
-        history.push("/")
     });
-
+   
     return (
     
-    <React.Fragment>
-      <Container className={classes.cont}>
+      <div className="container cont">
+      <h2>{article}</h2>
+     
       <form onSubmit={submitHandler}>
-      <div className="">
-        <input
-          className=""
+        <div className="group">      
+          <input 
+          type="text"   
           ref={register}
-          type="text"
           name="name"
           id="name"
-        />
-        <input
-          className=""
+          autoComplete="off"
+          />
+          <span className="highlight"></span>
+          <span classNameName="bar"></span>
+          <label>Name</label>
+        </div>
+          
+
+        <div className="group">      
+          <input 
+          type="text"   
           ref={register}
-          type="text"
           name="about"
           id="about"
-        />
-        <input
-          className=""
+          autoComplete="off"
+          />
+          <span className="highlight"></span>
+          <span classNameName="bar"></span>
+          <label>About</label>
+        </div>
+
+        <div className="group">      
+          <input 
+          type="text"   
           ref={register}
-          type="text"
           name="space"
-          id="space"
-        />
-        <input
-          className=""
+          id="space" 
+          autoComplete="off"
+          />
+          <span className="highlight"></span>
+          <span classNameName="bar"></span>
+          <label>Space</label>
+        </div>
+
+        <div className="group">      
+          <input 
+          type="text"   
           ref={register}
-          type="text"
-          name="sleeping areas"
-          id="sleeping areas"
-        />
-        <input
-          className=""
+          name="sleepingAreas"
+          autoComplete="off"
+          id="sleepingAreas"
+          />
+          <span className="highlight"></span>
+          <span classNameName="bar"></span>
+          <label>Sleeping areas</label>
+        </div>
+
+        <div className="group">      
+          <input 
+          type="text"   
           ref={register}
-          type="text"
-          name="default price"
-          id="default price"
-        />
-        <input
-          className=""
+          name="defaultPrice"
+          autoComplete="off"
+          id="defaultPrice"
+          />
+          <span className="highlight"></span>
+          <span classNameName="bar"></span>
+          <label htmlFor= "input">Default price</label>
+        </div>
+
+        <div className="group">      
+          <input 
+          type="text"   
           ref={register}
-          type="text"
           name="bathrooms"
+          autoComplete="off"
           id="bathrooms"
-        />
-      </div>
-      <div className="">
-      <Button
-      type="submit"
-      variant="contained"
-      color="primary"
-      size="small"
-      className={classes.button}
-      startIcon={<SaveIcon />}
-      disabled={false}
-      >
-      Upload Room
-      </Button>
-      </div>
-      </form> 
-            
+          />
+          <span className="highlight"></span>
+          <span classNameName="bar"></span>
+          <label>Bathrooms</label>
+        </div>
+        <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        size="small"
+        className={classes.button}
+        startIcon={<SaveIcon />}
+        disabled={false}
+        style = {{ width: '220px'}}
+        >
+        {buttonText}
+        </Button>
+      </form>
+    </div>
+     
         
-      </Container>
-    </React.Fragment>
+      
   );
 }
 
@@ -147,4 +175,5 @@ const roomForm = ({ room, submitHandler }) => {
 //             >
 //             Upload Room
 //             </Button>
-export default roomForm
+
+export default RoomForm

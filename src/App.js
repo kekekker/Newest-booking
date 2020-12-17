@@ -2,7 +2,7 @@ import List from './pages/List'
 import Navbar from './components/navbar'
 import Create from './pages/Create'
 import Room from './pages/Room'
-import 'materialize-css'
+import Edit from './pages/Edit'
 import {Switch, Route, Redirect} from 'react-router-dom'
 
 
@@ -21,7 +21,7 @@ function App() {
             <Room />
         </Route>
         <Route path="/Edit/:id" >
-             {/* <Edit /> */}
+             <Edit />
         </Route>
             <Redirect to="/List" />
         </Switch>

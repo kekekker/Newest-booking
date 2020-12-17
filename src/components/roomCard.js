@@ -9,11 +9,10 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
+    minWidth: '290px',
     marginTop: 25,
     maxWidth: 300,
     marginLeft: 25,
-  },
-  link: {
     textDecoration: "none"
   }
 });
@@ -26,21 +25,21 @@ export default function RoomCard(props) {
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        {/* <Link to={`/CertRoom/${room_id}`} className={classes.link}>  */}
+        <Link to={`/Room/${room_id}`} style={{color: 'black', textDecoration: 'none' }}>
         <CardMedia
           component="img"
           alt="xxx"
           height="140"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2" name = {props.name}>
+          <Typography gutterBottom variant="h5" component="h2">
           {props.name}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-              {props.about + " " + "qweqweqweqweqw eqweqweqweqweq weqweqweqweqweqw qweqwe"}
+          <Typography variant="body2" color="textSecondary" component="p" >
+              {props.about + " " }
           </Typography>
         </CardContent>
-        {/* </Link> */}
+        </Link>
       </CardActionArea>
     </Card>
   );

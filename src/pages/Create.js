@@ -1,18 +1,9 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
-import TextField from '@material-ui/core/TextField';
-import clsx from 'clsx';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Button from '@material-ui/core/Button';
+import { createRoom } from "../api";
 import { makeStyles } from '@material-ui/core/styles';
-import SaveIcon from '@material-ui/icons/Save';
-import { useForm } from "react-hook-form";
-import Input from '@material-ui/core/Input';
 import {useHistory} from 'react-router-dom'
 import 'materialize-css'
-import RoomForm from '../components/roomForm';
+import RoomForm from '../components/RoomForm.js';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -46,37 +37,15 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const Create = () => {
-    const classes = useStyles()
-
-    const { register, handleSubmit } = useForm()
-    const history = useHistory()
-    
-    const onSubmit = (data) => {
-      alert("qwe")
-  }
+  const history = useHistory()
+  
+  const onSubmit = async (data) => {
+    await createRoom(data)
+    history.push("/")
+  };
 
     return (
-      <RoomForm onSubmit = { onSubmit }/>
-
+      <RoomForm onSubmit = { onSubmit } article = "Create" buttonText = "upload"/>
   );
 }
-
-// <FormControlLabel
-//             name="miniBar"
-//             value=""
-//             control={<Switch color="primary" />}
-//             label="Mini-bar"
-//             labelPlacement="start"
-//             />
-//             <Button
-//             type="submit"
-//             variant="contained"
-//             color="primary"
-//             size="small"
-//             className={classes.button}
-//             startIcon={<SaveIcon />}
-//             disabled={false}
-//             >
-//             Upload Room
-//             </Button>
 export default Create

@@ -1,9 +1,10 @@
-import React from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from '@material-ui/core/Typography';
+import React, { useState, useEffect } from "react";
+import { useRouteMatch, Link } from "react-router-dom";
+import {getRoom, deleteRoom} from "../api";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,47 +35,65 @@ const useStyles = makeStyles((theme) => ({
         width: `50px`
     }
   }));
-  let flag = false 
-  let data = false
 
-const Room = () => {
+const Room = (props) => {
     const classes = useStyles();
+    const [room, setRoom] = useState();
+    const match = useRouteMatch()
+    
+    useEffect(() => {
+      const fetchRoom = async () => {
+        const room = await getRoom(match.params.id)
+        setRoom(room)
+      }
+      fetchRoom()
+    }, [match.params.id]);
+
+    
+
+    if (room){
     return (
     <React.Fragment>
       <Container className={classes.cont}>
         <form className={classes.root} noValidate autoComplete="off">
-            <Button
-            variant="contained"
-            color="secondary"
-            className={classes.button}
-            startIcon={<DeleteIcon />}
-            >
-            Delete room
-            </Button>
+        <Link to={`/Edit/${room._id}`} style={{color: 'black', textDecoration: 'none' }}>
+        <Button variant="contained" color="primary">
+        Edit
+        </Button>
+        </Link>
+            
             
           <Typography variant="h6" className={classes.title}>
-            Name: 
-          </Typography>
-            
-          <Typography variant="h6" className={classes.title}>
-            Space:
+            Name: {room.name}
           </Typography>
 
           <Typography variant="h6" className={classes.title}>
-            Bathrooms:
+            About: {room.about}
+          </Typography>
+
+          <Typography variant="h6" className={classes.title}>
+            Space: {room.space}
+          </Typography>
+
+          <Typography variant="h6" className={classes.title}>
+            Bathrooms: {room.bathrooms}
           </Typography>  
           
           <Typography variant="h6" className={classes.title}>
-            Space areas:
+            Sleeping areas: {room.sleepingAreas}
           </Typography>  
           
           <Typography variant="h6" className={classes.title}>
-            Minibar:
+            Default price: {room.defaultPrice}
           </Typography>
         </form>
       </Container>
     </React.Fragment>
   );
+} else {
+  return (
+    <div>Loading...</div>
+  )
 }
-
+}
 export default Room

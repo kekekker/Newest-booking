@@ -1,26 +1,31 @@
 import React, { useState, useEffect } from 'react'
+import {Link} from 'react-router-dom'
 import Room from '../components/roomCard.js'
+import { getRooms } from "../api"
+
 
 const List = () => {
     const [items, setItems] = useState([])
     
-    useEffect(() =>{
-        setItems([
-            {text:"f", id: 0},
-            {text:"f", id: 1},
-            {text:"f", id: 2},
-        ])
-    }, [])
+    useEffect(() => {
+        const fetchItems = async () => {
+          const rooms = await getRooms()
+          setItems(rooms)
+        }
+        fetchItems()
+      }, [])
 
     return(
         <div>
             <h1>List of rooms</h1>
             <div style = {{display: "flex", flexFlow: "row wrap"}}>
-            {items.map(item => {
+            {items.map(room => {
             return(
-                <Room key = {item.id}  name = {item.text}/>
-                )
-             })}
+                <Room key = {room._id} 
+                  about = {room.about}
+                  name = {room.name}
+                  id = {room._id}/>
+                )})}
             </div>
         </div>
     )
