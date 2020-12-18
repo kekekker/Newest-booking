@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import  RoomForm  from "../components/RoomForm";
-import { useRouteMatch, useHistory } from "react-router-dom";
+import { useRouteMatch, useHistory, Link } from "react-router-dom";
 import { getRoom, updateRoom } from "../api";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -35,20 +35,26 @@ const Edit = () => {
 
     return (room ?
       <div>
-      <Button
-      variant="contained"
-      color="secondary"
-      onClick = {del}
-      startIcon={<DeleteIcon />}
-      >
-      Delete room
-      </Button>
       <RoomForm 
       room = { room } 
       onSubmit = { onSubmit } 
       article = "Edit" 
       buttonText = "update"
-      /></div>
+      />
+      <Link to={`/List`} 
+      style={{color: 'black', textDecoration: 'none' }}
+      >
+      <Button
+      variant="contained"
+      color="secondary"
+      onClick = {del}
+      startIcon={<DeleteIcon />}
+      style={{display: "flex", marginLeft:"auto", marginRight:"auto", marginTop:"20px"}}
+      >
+      Delete room
+      </Button>
+      </Link>
+      </div>
       :
     <div>Loading...</div>
   );

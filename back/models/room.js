@@ -7,5 +7,15 @@ let room = new mongoose.Schema({
     bathrooms: String,
     space: String,
     defaultPrice: String,
+    fridge:  String,
+    conditioner: String,
+    view:String,
+    bar:String,
+    safe:String,
+    kitchen:String,
+    plazma:String,
+    threeTimes:String,
+    delievery:String,
+    remoteControl:String,
 })
 module.exports = mongoose.model('room', room)

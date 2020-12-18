@@ -1,5 +1,7 @@
 * { box-sizing:border-box; }
-
+body{
+  font-family: 'Roboto', sans-serif;
+}
 /* basic stylings ------------------------------------------ */
 .container 		{ 
     font-family:'Roboto';
@@ -122,6 +124,7 @@ input:focus ~ .highlight {
 }
 
 ul.ks-cboxtags {
+  width:750px;
   padding-inline-start: 0px;
   list-style: none;
 }
@@ -146,7 +149,7 @@ ul.ks-cboxtags li label{
 }
 
 ul.ks-cboxtags li label {
-  margin-left: 15px;
+  margin-left: 12px;
   padding: 8px 12px;
   cursor: pointer;
 }
@@ -242,7 +245,14 @@ textarea:focus {
 .el{
   display: flex;
 }
+h1{
+  font-size: 21pt;
+  text-align: center;
+  margin-bottom: 75px;
+  margin-top: 75px;
+}
 h2{
+  font-size: 21pt;
   margin-bottom: 100px;
   margin-top: 100px;
   text-align: center;

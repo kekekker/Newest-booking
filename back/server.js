@@ -3,11 +3,11 @@ const mongoose = require('mongoose')
 const Room = require("./models/room");
 const cors = require('cors')
 
-
 async function start() {
   try{
       await mongoose.connect('mongodb+srv://Yegor:sasuke@cluster0.5npuj.mongodb.net/app?retryWrites=true&w=majority', {
-      useNewUrlParser: true  
+      useNewUrlParser: true,
+      useUnifiedTopology: true 
     })
       app.listen(4000, () => console.log(`App has been started on port ${PORT}...`))
   } catch(e){
@@ -43,6 +43,16 @@ app.post("/create", (req, res) => {
     defaultPrice, 
     sleepingAreas,
     bathrooms,
+    fridge,
+    conditioner,
+    view,
+    bar,
+    safe,
+    kitchen,
+    plazma,
+    threeTimes,
+    delievery,
+    remoteControl,
   } = req.body
   const room = new Room({
     name: name, 
@@ -50,7 +60,18 @@ app.post("/create", (req, res) => {
     space: space,
     bathrooms: bathrooms, 
     about: about, 
-    defaultPrice: defaultPrice});
+    defaultPrice: defaultPrice,
+    fridge:  fridge,
+    conditioner: conditioner,
+    view: view,
+    bar: bar,
+    safe: safe,
+    kitchen: kitchen,
+    plazma: plazma,
+    threeTimes: threeTimes,
+    delievery: delievery,
+    remoteControl: remoteControl,
+  });
   room
     .save()
     .then((room) => {
@@ -80,6 +101,7 @@ app.post("/:id", (req, res) => {
         room.defaultPrice = req.body.defaultPrice;
         room.sleepingAreas = req.body.sleepingAreas;
         room.bathrooms = req.body.bathrooms;
+        room.value = "req.body.value";
         room
         .save()
         .then((room) => {
@@ -89,14 +111,14 @@ app.post("/:id", (req, res) => {
     }
   });
 });
-app.use(`/api/${id}`, require('../api'), (req, res) => {
+app.delete(`/api/:id`, (req, res) => {
   const id = req.params.id;
-  room.findByIdAndRemove(id, (error, data) => {
+  Room.findByIdAndRemove(id, (error, data) => {
     if (error) {
       return next(error);
     } else {
       res.status(200).json({
-        msg: "xyu sosi"
+        msg: ""
       })
     }
   })

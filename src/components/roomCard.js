@@ -25,18 +25,18 @@ export default function RoomCard(props) {
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <Link to={`/Room/${room_id}`} style={{color: 'black', textDecoration: 'none' }}>
+        <Link to={`/Room/${room_id}`} style={{textAlign:'left',color: 'black', textDecoration: 'none' }}>
         <CardMedia
           component="img"
           alt="xxx"
           height="140"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h5" component="h2" style={{textAlign:'left'}}>
           {props.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p" >
-              {props.about + " " }
+              {props.about}
           </Typography>
         </CardContent>
         </Link>

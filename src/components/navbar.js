@@ -1,3 +1,4 @@
+import { Home } from "@material-ui/icons";
 import React from "react";
 import {
   AppBar,
@@ -8,8 +9,8 @@ import {
   ListItemText,
   Container
 } from "@material-ui/core";
-// import { Home } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -43,9 +44,11 @@ const Navbar = () => {
     <AppBar position="static" className={classes.root}>
       <Toolbar>
         <Container maxWidth="md" className={classes.navbarDisplayFlex}>
-          {/* <IconButton edge="start" color="inherit" aria-label="home">
-            <Home fontSize="large" />
-          </IconButton> */}
+          <Link to="/List" style={{ textDecoration: 'none', color:"inherit" }}>
+            <IconButton edge="start" color="inherit" aria-label="home">
+              <Home fontSize="large" />
+            </IconButton>
+          </Link>
           <List
             component="nav"
             aria-labelledby="main navigation"

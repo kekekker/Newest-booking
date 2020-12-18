@@ -48,7 +48,6 @@ function RoomForm({ room, onSubmit, article, buttonText}){
       about: room ? room.about : "",
       }
     })
-    
     const submitHandler = handleSubmit((data) => {
         onSubmit(data)
     });
@@ -151,51 +150,48 @@ function RoomForm({ room, onSubmit, article, buttonText}){
         </div>
         <div className="el"></div>
         <div className="el"></div>
-         
-
-        
-        
+ 
         <div className="checkbox">
         <ul className="ks-cboxtags">
         <li>
-          <input type="checkbox" id="checkboxOne" value="Rainbow Dash"/>
-          <label htmlFor="checkboxOne">Rainbow Dash</label>
+          <input ref={register}  name="fridge"  id="fridge" type="checkbox" value="Rainbow Dash"/>
+          <label htmlFor="fridge">Fridge</label>
         </li>
         <li>
-          <input type="checkbox" id="checkboxTwo" value="Cotton Candy" />
-          <label htmlFor="checkboxTwo">Cotton Candy</label>
+          <input ref={register}  name="conditioner"  type="checkbox" id="conditioner" value="Cotton Candy" />
+          <label htmlFor="conditioner">Conditioner</label>
         </li>
         <li>
-          <input type="checkbox" id="checkboxThree" value="Rarity" />
-          <label htmlFor="checkboxThree">Rarity</label>
+          <input ref={register}  name="view" type="checkbox" id="view" value="Rarity" />
+          <label htmlFor="view">View</label>
         </li>
         <li>
-          <input type="checkbox" id="checkboxFour" value="Moondancer"/>
-          <label htmlFor="checkboxFour">Moondancer</label>
+          <input ref={register}  name="bar" type="checkbox" id="bar" value="Moondancer"/>
+          <label htmlFor="bar">Bar</label>
         </li>
         <li>
-          <input type="checkbox" id="checkboxFour" value="Moondancer"/>
-          <label htmlFor="checkboxFour">Moondancer</label>
+          <input ref={register}  name="safe" type="checkbox" id="safe" value="Surprise" />
+          <label htmlFor="safe">Safe</label>
         </li>
         <li>
-          <input type="checkbox" id="checkboxFour" value="Moondancer"/>
-          <label htmlFor="checkboxFour">Moondancer</label>
+          <input ref={register}  name="kitchen" type="checkbox" id="kitchen" value="Twilight Sparkle" />
+          <label htmlFor="kitchen">Kitchen</label>
         </li>
         <li>
-          <input type="checkbox" id="checkboxFour" value="Moondancer"/>
-          <label htmlFor="checkboxFour">Moondancer</label>
+          <input ref={register}  name="plazma" type="checkbox" id="plazma" value="Fluttershy" />
+          <label htmlFor="plazma">Plazma</label>
         </li>
         <li>
-          <input type="checkbox" id="checkboxFour" value="Moondancer"/>
-          <label htmlFor="checkboxFour">Moondancer</label>
+          <input ref={register}  name="threeTimes" type="checkbox" id="threeTimes" value="Derpy Hooves" />
+          <label htmlFor="threeTimes">Three Times Serv.</label>
         </li>
         <li>
-          <input type="checkbox" id="checkboxFour" value="Moondancer"/>
-          <label htmlFor="checkboxFour">Moondancer</label>
+          <input ref={register}  name="delievery" type="checkbox" id="delievery" value="Princess Celestia" />
+          <label htmlFor="delievery">Delievery</label>
         </li>
         <li>
-          <input type="checkbox" id="checkboxFour" value="Moondancer"/>
-          <label htmlFor="checkboxFour">Moondancer</label>
+          <input ref={register}  name="remoteControl" type="checkbox" id="remoteControl" value="Gusty" />
+          <label htmlFor="remoteControl">Remote Control Curtains</label>
         </li>
         </ul>
         </div>
@@ -213,13 +209,12 @@ function RoomForm({ room, onSubmit, article, buttonText}){
         </Button>
         
       </form>
-     
     </div>
      
-        
       
   );
 }
+
 
 // <FormControlLabel
 //             name="miniBar"
